@@ -4,14 +4,23 @@ import { Configuration } from "webpack";
 
 const env = process.env.NODE_ENV as "development" | "production" | "none";
 
-const config: Configuration & { devServer: { hot: boolean } } = {
+const config: Configuration & {
+  devServer: { hot: boolean; historyApiFallback: any };
+} = {
   entry: "./src/index.tsx",
-  output: { path: path.join(__dirname, "build"), filename: "index.bundle.js" },
+  output: {
+    path: path.join(__dirname, "build"),
+    filename: "[name].js",
+    publicPath: "/",
+  },
   mode: env || "development",
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
-  devServer: { hot: true },
+  devServer: {
+    hot: true,
+    historyApiFallback: true,
+  },
   module: {
     rules: [
       {
