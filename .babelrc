@@ -2,8 +2,15 @@
     "presets": [
         "@babel/env",
         "@babel/react",
-        "@babel/preset-typescript"
+        "@babel/preset-typescript",
+        [
+            "@babel/preset-react",
+            {
+                "runtime": "automatic"
+            }
+        ]
     ],
-    "plugins": ["babel-plugin-styled-components"]
-      
+    "plugins": [
+        "babel-plugin-styled-components"
+    ]
 }
